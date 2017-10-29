@@ -1,32 +1,47 @@
 import React, { Component } from 'react';
+import Add from "./Add";
+import Remove from "./Remove";
 
 export default class Store extends Component {
     constructor(props) {
         super(props);
         this.state = {isFavorite: false};
-        this.handleClick = this.handleClick.bind(this);
     }
-    handleClick() {
+    addFavorite(item){
         this.setState(prevState => ({
-            isFavorite: !prevState.isFavorite
+            isFavorite: true
         }));
-        //this.props.addFavorite('Name: ' +this.props.Name+', Address: '+this.props.Address);
+        this.props.addFavorite(item);
+    }
+    removeFavorite(item){
+        this.setState(prevState => ({
+            isFavorite: false
+        }));
+        console.log('remove');
+        this.props.removeFavorite(item);
+    }
+    isFavorite(){
+
     }
     render() {
         const favorite = this.state.isFavorite;
+        let favoriteStyle;
+        let action;
         if(favorite === true){
-            var favoriteStyle = {
+            favoriteStyle = {
                 backgroundColor: "#ffde00",
             };
+            action = <Remove Name={ this.props.Name } Address={ this.props.Address } removeFavorite={(e)=>this.removeFavorite(e)}/>
         }else{
-            var favoriteStyle = {
+            favoriteStyle = {
                 backgroundColor: "#ffffff",
             };
+            action = <Add Name={ this.props.Name } Address={ this.props.Address } addFavorite={(e)=>this.addFavorite(e)}/>
         }
 
         return (
-            <div style={favoriteStyle} id="store" onClick={this.handleClick}>
-                <h3>{this.props.Name}</h3>
+            <div style={favoriteStyle} id="store">
+                <span>{action} <h3>{this.props.Name}</h3></span>
                 <p>{this.props.Address}</p>
                 <hr/>
             </div>
