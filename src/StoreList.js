@@ -18,9 +18,12 @@ export default class StoreList extends Component {
             <Store Name={ item.Name } key={ item.Name }  Address={ item.Address } removeFavorite={(e)=>this.removeFavorite(e)} addFavorite={(e)=>this.addFavorite(e)}/>
         );
         return (
-            <div id="list">
-                <h2>{this.props.header} ( {rows.length} )</h2>
-                { rows }
+            <div id="store_list">
+            <div className="starter-template">
+                <h1>{this.props.header} ( {rows.length} )</h1>
+                <hr/>
+            </div>
+            { rows }
             </div>
         );
     }

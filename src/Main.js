@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import LeftBar from './LeftBar';
+import NavBar from './NavBar';
 import Container from './Container';
 
 export default class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            active_view: 'map',
-        }//default show map
+            active_view: 'map',//default show map
+        }
     }
     //emulate routes in my application
     renderView(view){
@@ -19,7 +19,7 @@ export default class Main extends Component {
     render() {
         return (
             <div id="main">
-                <LeftBar renderView={(e)=>this.renderView(e)} />
+                <NavBar ActiveView={this.state.active_view} renderView={(e)=>this.renderView(e)} />
                 <Container ActiveView={this.state.active_view} />
             </div>
         );

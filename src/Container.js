@@ -46,14 +46,14 @@ export default class Container extends Component {
                 container = <StoreList header="Favorites List" List={this.state.favorite_list} removeFavorite={(e)=>this.removeFavorite(e)} addFavorite={(e)=>this.addFavorite(e)}/>;
                 break;
             case 'stores':
-                container = <StoreList header="All Stores" List={this.state.store_list} removeFavorite={(e)=>this.removeFavorite(e)} addFavorite={(e)=>this.addFavorite(e)}/>;
+                container = <StoreList header="All Stores List" List={this.state.store_list} removeFavorite={(e)=>this.removeFavorite(e)} addFavorite={(e)=>this.addFavorite(e)}/>;
                 break;
             case 'map':
             default:
                 container = <GoogleMap data=""/>;
         }
         return (
-            <div id="container">
+            <div id="container" className="container">
                 {container}
             </div>
         );

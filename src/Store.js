@@ -41,7 +41,8 @@ export default class Store extends Component {
 
         return (
             <div style={favoriteStyle} id="store">
-                <span>{action} <h3>{this.props.Name}</h3></span>
+                {action}
+                <h3>{this.props.Name}</h3>
                 <p>{this.props.Address}</p>
                 <hr/>
             </div>
